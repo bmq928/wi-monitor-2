@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.js",
+    "dev": "export NODE_ENV=development && nodemon src/index.js",
+    "test": "export NODE_ENV=test &&  jest ./src"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +16,10 @@
     "nodemon": "^1.18.4"
   },
   "dependencies": {
+    "config": "^2.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "influx": "^5.0.7"
+    "influx": "^5.0.7",
+    "os-utils": "0.0.14"
   }
 }
