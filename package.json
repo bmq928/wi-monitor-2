@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "dev": "export NODE_ENV=development && nodemon src/index.js",
-    "test": "export NODE_ENV=test &&  jest ./src"
+    "dev": "export NODE_ENV=development && nodemon src/index.js --ignore *.spec.js",
+    "test": "export NODE_ENV=test &&  jest ./src",
+    "test-watch": "export NODE_ENV=test &&  jest ./src --watch"
   },
   "author": "bmq928@gmail.com",
   "license": "ISC",

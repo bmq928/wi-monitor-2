@@ -14,6 +14,8 @@ const poll = () => new Promise(async (resolve, reject) => {
 
         const result = lines
             .map(l => {
+
+                // remove unecessary symbol
                 const line = l.trim().replace('  ', ' ')
                 const [cpu, memory, ...commandSplited] = line.split(' ')
                 const command = commandSplited.join(' ')
@@ -26,7 +28,7 @@ const poll = () => new Promise(async (resolve, reject) => {
                 // have same command value
                 const preElementIndex = arr.findIndex(el => el[2] === val[2])
 
-                //this is the first element
+                //this element is the first element
                 if (preElementIndex === i) return true
 
                 // increase count
@@ -36,7 +38,7 @@ const poll = () => new Promise(async (resolve, reject) => {
             })
             .reduce((acc, cur) => {
 
-                // remove unecessary symbol
+                
                 const [cpu, memory, command, count] = cur
 
                 acc.cpu.push(parseFloat(cpu))
