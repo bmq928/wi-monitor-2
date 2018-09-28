@@ -60,7 +60,7 @@ const poll = () => new Promise(async (resolve, reject) => {
 
 
 
-        console.log(result.cpu.filter((val, i) => result.command[i]==='code'))
+        // console.log(result.cpu.filter((val, i) => result.command[i]==='code'))
 
         resolve(result)
 

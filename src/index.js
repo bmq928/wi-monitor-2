@@ -25,7 +25,7 @@ async function main() {
         
         const db = await database.init(
             monitorApi.schema,
-            // monitorCpu.schema,
+            monitorCpu.schema,
             monitorMemory.schema,
             monitorProcess.schema
         )
