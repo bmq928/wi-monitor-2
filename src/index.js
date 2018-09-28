@@ -23,7 +23,12 @@ async function main() {
 
     try {
         
-        const db = await database.start()
+        const db = await database.init(
+            monitorApi.schema,
+            // monitorCpu.schema,
+            monitorMemory.schema,
+            monitorProcess.schema
+        )
         const app = await server.start()
         
         await monitorApi.createApi(app, db)

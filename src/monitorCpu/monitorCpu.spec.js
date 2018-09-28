@@ -14,8 +14,8 @@ describe('Monitor Cpu', () => {
     it('cpu usage should be between 0 and 1', async () => {
         const result = await poll()
 
-        expect(result).toBeLessThan(1)
-        expect(result).toBeGreaterThan(0)
+        expect(result.cpuUsage).toBeLessThan(1)
+        expect(result.cpuUsage).toBeGreaterThan(0)
     })
 
     afterEach(() => {

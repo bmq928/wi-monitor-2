@@ -1,19 +1,12 @@
 const { InfluxDB, FieldType } = require('influx')
 const config = require('config')
 
-const start = () => new Promise(async (resolve, reject) => {
+const init = (...schema) => new Promise(async (resolve, reject) => {
     const influxConfig = config.get('db.influx')
+    
     const influx = new InfluxDB({
         ...influxConfig,
-        schema: [{
-            measurement: 'response_time',
-            tags: ['username', 'path'],
-            fields: {
-                duration: FieldType.INTEGER,
-                ipadrr: FieldType.STRING,
-                pid: FieldType.STRING
-            }
-        }]
+        schema: [...schema]
     })
 
 
@@ -28,4 +21,4 @@ const start = () => new Promise(async (resolve, reject) => {
     }
 })
 
-module.exports = { start }
+module.exports = { init }

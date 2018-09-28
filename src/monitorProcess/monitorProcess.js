@@ -1,4 +1,5 @@
 const execa = require('execa')
+const os = require('os-utils')
 
 const poll = () => new Promise(async (resolve, reject) => {
     try {
@@ -21,7 +22,7 @@ const poll = () => new Promise(async (resolve, reject) => {
                 const command = commandSplited.join(' ')
                 const count = 1
 
-                return [cpu, memory, command, count]
+                return [parseFloat(cpu), parseFloat(memory), command, parseInt(count)]
             })
             .filter((val, i, arr) => {
 
@@ -33,6 +34,10 @@ const poll = () => new Promise(async (resolve, reject) => {
 
                 // increase count
                 ++arr[preElementIndex][3]
+
+                //increase cpu
+                arr[preElementIndex][0] += val[0]
+                if(arr[preElementIndex][2] === 'code') console.log(arr[preElementIndex])
                 return false
 
             })
@@ -41,9 +46,9 @@ const poll = () => new Promise(async (resolve, reject) => {
                 
                 const [cpu, memory, command, count] = cur
 
-                acc.cpu.push(parseFloat(cpu))
+                acc.cpu.push(parseFloat(cpu) / os.cpuCount())
                 acc.count.push(count)
-                acc.memory.push(parseFloat(memory))
+                acc.memory.push(parseFloat(memory) / os.totalmem())
                 acc.command.push(command)
 
                 return acc
@@ -55,7 +60,7 @@ const poll = () => new Promise(async (resolve, reject) => {
 
 
 
-        // console.log(result)
+        console.log(result.cpu.filter((val, i) => result.command[i]==='code'))
 
         resolve(result)
 
@@ -64,7 +69,7 @@ const poll = () => new Promise(async (resolve, reject) => {
     }
 })
 
-// poll()
+poll()
 
 module.exports = {
     poll
