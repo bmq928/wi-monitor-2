@@ -1,0 +1,15 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "3001:3001"
+    links:
+      - influxdb
+    environment:
+      NODE_ENV: production
+
+  influxdb:
+    image: influxdb:alpine
+    ports:
+      - "8086:8086"

@@ -1,0 +1,8 @@
+.vscode
+.git
+/node_modules
+.eslintrc.json
+.gitignore
+Dockerfile
+docker-compose.yml
+.dockerignore
