@@ -1,5 +1,5 @@
 const { FieldType } = require('influx')
-const axios = require('axios')
+// const axios = require('axios')
 const monitorApi = require('./monitorApi')
 
 const measurementName = 'response_time'

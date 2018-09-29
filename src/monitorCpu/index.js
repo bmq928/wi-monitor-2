@@ -18,10 +18,6 @@ const createApi = (app, db) => new Promise((resolve, reject) => {
     resolve()
 })
 
-const createMiddleware = () => {
-
-}
-
 module.exports = {
     createApi,
     schema
