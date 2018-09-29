@@ -1,4 +1,5 @@
 const execa = require('execa')
+const os = require('os-utils')
 const {poll} = require('./monitorProcess')
 
 
@@ -62,9 +63,9 @@ describe('Memory Monitor', () => {
         const result = await poll()
 
         expect(result).toEqual({
-            cpu: [0.2,0,0,0],
+            cpu: [0.05,0,0,0],
             count: [7,2,1,2],
-            memory: [0.2,0,0,0],
+            memory: [0.2 / os.totalmem(),0,0,0],
             command: ['a','b','c','d']
         })
 

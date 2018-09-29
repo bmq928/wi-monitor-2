@@ -1,0 +1,191 @@
+[
+    {
+        "duration": 461,
+        "ipaddr": "::ffff:127.0.0.1",
+        "path": "/project/list",
+        "pid": "13449",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 118,
+        "ipaddr": null,
+        "path": "/project/fullinfo",
+        "pid": "13306",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 189,
+        "ipaddr": null,
+        "path": "/family/list",
+        "pid": "13506",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 178,
+        "ipaddr": null,
+        "path": "/pattern/list",
+        "pid": "13384",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 10,
+        "ipaddr": null,
+        "path": "/task-spec/list",
+        "pid": "13526",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 61,
+        "ipaddr": null,
+        "path": "/family/all-unit",
+        "pid": "13333",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 47,
+        "ipaddr": null,
+        "path": "/family/all-unit",
+        "pid": "13333",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 81,
+        "ipaddr": null,
+        "path": "/pal/all",
+        "pid": "13271",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 89,
+        "ipaddr": null,
+        "path": "/project/plot/info",
+        "pid": "13401",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 18,
+        "ipaddr": null,
+        "path": "/project/plot/track/info",
+        "pid": "13526",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 8,
+        "ipaddr": "::1",
+        "path": "/project/plot/edit",
+        "pid": "13271",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 539,
+        "ipaddr": null,
+        "path": "/project/well/dataset/curve/getData",
+        "pid": "13384",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 550,
+        "ipaddr": null,
+        "path": "/project/well/dataset/curve/getData",
+        "pid": "13281",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 551,
+        "ipaddr": null,
+        "path": "/project/well/dataset/curve/getData",
+        "pid": "13281",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 517,
+        "ipaddr": "::1",
+        "path": "/project/well/dataset/curve/info",
+        "pid": "13506",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 514,
+        "ipaddr": "::1",
+        "path": "/project/well/dataset/curve/info",
+        "pid": "13401",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 7,
+        "ipaddr": "::ffff:127.0.0.1",
+        "path": "/project/plot/edit",
+        "pid": "13306",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 512,
+        "ipaddr": "::ffff:127.0.0.1",
+        "path": "/project/well/dataset/curve/info",
+        "pid": "13465",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 5,
+        "ipaddr": "::ffff:127.0.0.1",
+        "path": "/project/plot/edit",
+        "pid": "13364",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 3,
+        "ipaddr": "::ffff:127.0.0.1",
+        "path": "/project/info",
+        "pid": "13560",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 11,
+        "ipaddr": "::1",
+        "path": "/project/well/zone-set/list",
+        "pid": "13560",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 3,
+        "ipaddr": "::1",
+        "path": "/project/info",
+        "pid": "13364",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 24,
+        "ipaddr": "::1",
+        "path": "/project/well/zone-set/list",
+        "pid": "13449",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 5,
+        "ipaddr": "::1",
+        "path": "/project/plot/edit",
+        "pid": "13465",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 10,
+        "ipaddr": null,
+        "path": "/family/list-unit",
+        "pid": "13449",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 521,
+        "ipaddr": "::1",
+        "path": "/project/well/dataset/curve/info",
+        "pid": "13306",
+        "username": "tkvmai"
+    },
+    {
+        "duration": 545,
+        "ipaddr": null,
+        "path": "/project/well/dataset/curve/getData",
+        "pid": "13506",
+        "username": "tkvmai"
+    }
+]

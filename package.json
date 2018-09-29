@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "dev": "export NODE_ENV=development && nodemon src/index.js --ignore *.spec.js",
+    "dev": "export NODE_ENV=development && nodemon src/index.js --ignore *.spec.js --ignore /automatic/*",
     "test": "export NODE_ENV=test &&  jest ./src",
-    "test-watch": "export NODE_ENV=test &&  jest ./src --watch"
+    "test:watch": "export NODE_ENV=test &&  jest ./src --watch",
+    "seed:dev": "export NODE_ENV=development && node automatic/db/seed.js ",
+    "seed:test": "export NODE_ENV=test && node automatic/db/seed.js",
+    "drop:dev": "export NODE_ENV=development && node automatic/db/drop.js ",
+    "drop:test": "export NODE_ENV=test && node automatic/db/drop.js"
   },
   "author": "bmq928@gmail.com",
   "license": "ISC",
@@ -18,6 +22,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "config": "^2.0.1",
     "cors": "^2.8.4",
     "execa": "^1.0.0",

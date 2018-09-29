@@ -22,22 +22,27 @@ main()
 async function main() {
 
     try {
-        
-        const db = await database.init(
-            monitorApi.schema,
-            monitorCpu.schema,
-            monitorMemory.schema,
-            monitorProcess.schema
-        )
+
+        const db = await database.init({
+            schemas: [
+                monitorApi.schema,
+                monitorCpu.schema,
+                monitorMemory.schema,
+                monitorProcess.schema
+            ],
+            contiousQueries: [
+                monitorApi.createContinousQuery
+            ]
+        })
         const app = await server.start()
-        
+
         await monitorApi.createApi(app, db)
         await monitorCpu.createApi(app, db)
         await monitorMemory.createApi(app, db)
         await monitorProcess.createApi(app, db)
-        
+
         startServer(app)
-        
+
 
     } catch (e) {
         console.error(e)
@@ -46,7 +51,7 @@ async function main() {
 }
 
 function startServer(app) {
-    
+
     const PORT = config.get('app.port')
 
     http.createServer(app).listen(PORT, () => console.log(`server is started in port ${PORT}`))

@@ -37,7 +37,6 @@ const poll = () => new Promise(async (resolve, reject) => {
 
                 //increase cpu
                 arr[preElementIndex][0] += val[0]
-                if(arr[preElementIndex][2] === 'code') console.log(arr[preElementIndex])
                 return false
 
             })
