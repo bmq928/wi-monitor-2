@@ -4,7 +4,7 @@
   "description": "for remotely monitoring backend_server",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=production && node ./src/index.js",
+    "start": "export NODE_ENV=production",
     "dev": "export NODE_ENV=development && nodemon src/index.js --ignore *.spec.js --ignore /automatic/*",
     "test": "export NODE_ENV=test &&  jest ./src",
     "test:watch": "export NODE_ENV=test &&  jest ./src --watch",
