@@ -37,7 +37,7 @@ async function run() {
                 pid: data.pid
             }
 
-            // return { measurement, tags, fields }
+            return { measurement, tags, fields }
         })
         
         await repository.writePoints(insertableData)
