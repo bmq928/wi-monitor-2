@@ -23,16 +23,22 @@ async function main() {
 
     try {
 
-        const db = await database.init({
-            schemas: [
-                monitorApi.schema,
-                monitorCpu.schema,
-                monitorMemory.schema,
-                monitorProcess.schema
-            ],
-            contiousQueries: [
-                monitorApi.createContinousQuery
-            ]
+        const influxSchemas = [
+            monitorApi.schema,
+            monitorCpu.schema,
+            monitorMemory.schema,
+            monitorProcess.schema
+        ]
+
+        const influxContiousQueries = [
+            monitorApi.createContinousQuery
+        ]
+
+        const db = await database.connect({
+            influxDB: {
+                schemas: influxSchemas,
+                contiousQueries: influxContiousQueries
+            }
         })
         const app = await server.start()
 

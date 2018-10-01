@@ -17,7 +17,7 @@ const createRepository = (db, measurementName) => {
 
     const countRequest = () => new Promise(async (resolve, reject) => {
         try {
-            const result = await db.query(`select count(*) from ${measurementName}`)
+            const result = await db.influxDB.query(`select count(*) from ${measurementName}`)
             resolve(result)
         } catch (e) {
             reject(e)
@@ -41,7 +41,7 @@ const createRepository = (db, measurementName) => {
         if (!pid) return reject(new Error('pid is required'))
 
         try {
-            await db.writePoints([{
+            await db.influxDB.writePoints([{
                 measurement: measurementName,
                 tags: {
                     username,
@@ -73,7 +73,7 @@ const createRepository = (db, measurementName) => {
 
         try {
             const query = `SELECT * FROM ${measurementName} WHERE 1=1 ${whereClause}`
-            const result = await db.query(query)
+            const result = await db.influxDB.query(query)
             const formatResult = await convertTime(result)
 
             if(!formatResult || !formatResult.length) throw new Error('Internal Error')
@@ -94,7 +94,7 @@ const createRepository = (db, measurementName) => {
 
         try {
             const query = `SELECT * FROM three_months.mean_response_times_2 WHERE 1=1 ${whereClause}`
-            const result = await db.query(query)
+            const result = await db.influxDB.query(query)
             const formatResult = await convertTime(result)
 
             if(!formatResult || !formatResult.length) throw new Error('Internal Error')
