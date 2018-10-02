@@ -32,9 +32,13 @@ const createApi = (app, db) => new Promise(async (resolve, reject) => {
         try {
 
             const data = {
-                hours: req.query.hours,
+                days: req.query.days,
                 domain: req.query.domain
             }
+
+            const result = await repository.minMaxUsage(data)
+            res.status(200).json(result)
+
 
         } catch (e) {
             res.status(400).send(e.message)
