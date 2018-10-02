@@ -32,7 +32,8 @@ async function main() {
 
         const influxContiousQueries = [
             monitorApi.createContinousQuery,
-            monitorCpu.createContinousQuery
+            monitorCpu.createContinousQuery,
+            monitorMemory.createContinousQuery
         ]
 
         const db = await database.connect({
