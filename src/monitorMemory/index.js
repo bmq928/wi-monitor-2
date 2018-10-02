@@ -68,15 +68,15 @@ const createContinousQuery = (dbName, retentionPolicyFrom, retentionPolicyTo) =>
 
     CREATE CONTINUOUS QUERY max_1h_memory ON ${dbName} 
     BEGIN
-        SELECT max(used) AS "maxUsage" INTO ${dbName}.${retentionPolicyTo}.max_memory_usage 
+        SELECT max(used) AS "maxUsed" INTO ${dbName}.${retentionPolicyTo}.max_memory_usage 
         FROM ${dbName}.${retentionPolicyFrom}.${measurementName} 
         GROUP BY time(1h), domain, serverName
     END ;
 
 
-    CREATE CONTINUOUS QUERY min_1h_mrmory ON ${dbName} 
+    CREATE CONTINUOUS QUERY min_1h_memory ON ${dbName} 
     BEGIN
-        SELECT min(used) AS "maxUsage" INTO ${dbName}.${retentionPolicyTo}.min_memory_usage 
+        SELECT min(used) AS "minUsed" INTO ${dbName}.${retentionPolicyTo}.min_memory_usage 
         FROM ${dbName}.${retentionPolicyFrom}.${measurementName} 
         GROUP BY time(1h), domain, serverName
     END ;

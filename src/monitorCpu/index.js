@@ -69,7 +69,7 @@ const createContinousQuery = (dbName, retentionPolicyFrom, retentionPolicyTo) =>
 
     CREATE CONTINUOUS QUERY min_1h_cpu ON ${dbName} 
     BEGIN
-        SELECT min(cpuUsage) AS "maxUsage" INTO ${dbName}.${retentionPolicyTo}.min_cpu_usage 
+        SELECT min(cpuUsage) AS "minUsage" INTO ${dbName}.${retentionPolicyTo}.min_cpu_usage 
         FROM ${dbName}.${retentionPolicyFrom}.${measurementName} 
         GROUP BY time(1h), domain, serverName
     END ;
