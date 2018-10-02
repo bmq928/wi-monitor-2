@@ -50,11 +50,11 @@ const createApi = (app, db) => new Promise((resolve, reject) => {
                 username: req.query.username
             }
 
-            const result = await repository.allMeanRequest(data)
+            const result = await repository.meanRequest(data)
             res.status(200).json(result)
         } catch (e) {
-            console.log('index')
-            console.log({e})
+            // console.log('index')
+            // console.log({e})
             res.status(400).send(e.message)
         }
     })
@@ -79,7 +79,7 @@ const createContinousQuery = (dbName, retentionPolicyFrom, retentionPolicyTo) =>
     CREATE CONTINUOUS QUERY cq_1h_2 ON ${dbName} 
     BEGIN
         SELECT mean("duration") AS "duration" INTO ${dbName}.${retentionPolicyTo}.mean_response_times_2 
-        FROM ${dbName}.${retentionPolicyFrom}.response_times 
+        FROM ${dbName}.${retentionPolicyFrom}.${measurementName} 
         GROUP BY time(1h), username, path 
     END
 

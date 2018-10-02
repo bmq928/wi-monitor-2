@@ -1,16 +1,4 @@
-const moment = require('moment-timezone')
-
-//copy function
-//for converting time when query from influx
-const convertTime = (objectArray) => new Promise((resolve, reject) => {
-    objectArray.forEach(object => {
-        object.time = moment(object.time.getTime())
-            .tz('Asia/Ho_Chi_Minh')
-            .format('YYYY/MM/DD HH:mm:ss.SSSS')
-    })
-    resolve(objectArray)
-})
-
+const { convertTime } = require('../utils')
 
 const createRepository = (db, measurementName) => {
 
@@ -18,6 +6,7 @@ const createRepository = (db, measurementName) => {
     const countRequest = () => new Promise(async (resolve, reject) => {
         try {
             const result = await db.influxDB.query(`select count(*) from ${measurementName}`)
+            if (!result || !result.length) throw new Error('Internal Error')
             resolve(result)
         } catch (e) {
             reject(e)
@@ -76,14 +65,14 @@ const createRepository = (db, measurementName) => {
             const result = await db.influxDB.query(query)
             const formatResult = await convertTime(result)
 
-            if(!formatResult || !formatResult.length) throw new Error('Internal Error')
+            if (!formatResult || !formatResult.length) throw new Error('Internal Error')
             resolve(formatResult)
         } catch (e) {
             reject(e)
         }
     })
 
-    const allMeanRequest = data => new Promise(async (resolve, reject) => {
+    const meanRequest = data => new Promise(async (resolve, reject) => {
         const days = data.days || 1
         const { username } = data
 
@@ -97,7 +86,7 @@ const createRepository = (db, measurementName) => {
             const result = await db.influxDB.query(query)
             const formatResult = await convertTime(result)
 
-            if(!formatResult || !formatResult.length) throw new Error('Internal Error')
+            if (!formatResult || !formatResult.length) throw new Error('Internal Error')
             resolve(formatResult)
 
         } catch (e) {
@@ -109,7 +98,7 @@ const createRepository = (db, measurementName) => {
         countRequest,
         insertData,
         allRequest,
-        allMeanRequest
+        meanRequest
     }
 }
 

@@ -14,9 +14,20 @@ const schema = {
     }
 }
 
-const createApi = (app, db) => new Promise((resolve, reject) => {
-    app.get('/memory-monitor', (req, res) => {
+const createApi = (app, db) => new Promise(async (resolve, reject) => {
 
+    const repository = await memoryMonitor.createRepository(db)
+
+    app.get('/monitor-memory/all', async (req, res) => {
+
+    })
+
+    app.get('/monitor-memory/mean/all', async (req, res) => {
+
+    })
+
+    app.post('monitor-memory/insert-data', async (req, res) => {
+        
     })
 
     resolve()

@@ -1,31 +1,23 @@
-const execa = require('execa')
+const createRepository = (db, measurementName)  => {
+    const insertData = data => new Promise(async (resolve, reject) => {
 
-const poll = () => new Promise(async (resolve, reject) => {
+    })
 
-    try {
-        const { stdout } = await execa.shell('free -m')
-        const memInfo = stdout.split('\n')[1]
-        const preProcessMem = memInfo.replace(/(\s)+/g, ' ')
-        const [_, total, used, free, shared, buff, available] = preProcessMem.split(' ')
-        
-        const result = {
-            total: parseFloat(total),
-            used : parseFloat(used),
-            free: parseFloat(free),
-            shared: parseFloat(shared),
-            buff: parseFloat(buff),
-            available: parseFloat(available)
-        }
+    const allRequest = time => new Promise(async (resolve, reject) => {
 
-        resolve(result)
-        
-    } catch (e) {
-        reject(e)
+    })
+
+    const meanRequest = time => new Promise(async (resolve, reject) => {
+
+    })
+
+    return {
+        insertData,
+        allRequest,
+        meanRequest
     }
-})
-
-poll()
+}
 
 module.exports = {
-    poll
+    createRepository
 }

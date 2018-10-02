@@ -7,6 +7,7 @@
     "start": "export NODE_ENV=production",
     "dev": "export NODE_ENV=development && nodemon src/index.js --ignore *.spec.js --ignore /automatic/*",
     "test": "export NODE_ENV=test &&  jest ./src",
+    "e2e": "export NODE_ENV=test &&  jest ./e2e",
     "test:watch": "export NODE_ENV=test &&  jest ./src --watch",
     "seed:dev": "export NODE_ENV=development && node automatic/db/seed.js ",
     "seed:test": "export NODE_ENV=test && node automatic/db/seed.js",
@@ -18,7 +19,9 @@
   "author": "bmq928@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.18.0",
     "eslint": "^5.6.0",
+    "execa": "^1.0.0",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4"
   },
@@ -26,7 +29,6 @@
     "body-parser": "^1.18.3",
     "config": "^2.0.1",
     "cors": "^2.8.4",
-    "execa": "^1.0.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "influx": "^5.0.7",
