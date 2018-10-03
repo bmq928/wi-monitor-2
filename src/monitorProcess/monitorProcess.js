@@ -18,21 +18,39 @@ const createRepository = (db, measurementName) => {
         if (!count) return reject(new Error('count is required'))
         if (!memory) return reject(new Error('memory is required'))
 
+        //tranform data
+        //command, cpu, count, memory is array with same length
+        const insertData = command.map((c, i) => ({
+            measurement: measurementName,
+            tags: {
+                domain: domain,
+                serverName,
+                command: c
+            },
+            fields: {
+                cpu: cpu[i],
+                count: count[i],
+                memory: memory[i]
+            }
+        }))
+        
         try {
 
-            await db.influxDB.writePoints([{
-                measurement: measurementName,
-                tags: {
-                    domain,
-                    serverName,
-                    command
-                },
-                fields: {
-                    cpu,
-                    count,
-                    memory
-                },
-            }])
+            // await db.influxDB.writePoints([{
+            //     measurement: measurementName,
+            //     tags: {
+            //         domain,
+            //         serverName,
+            //         command
+            //     },
+            //     fields: {
+            //         cpu,
+            //         count,
+            //         memory
+            //     }
+            // }])
+
+            await db.influxDB.writePoints(insertData)
 
             resolve()
         } catch (e) {
@@ -87,7 +105,7 @@ const createRepository = (db, measurementName) => {
 
             //min is not neccessary
             //if max is null, min is null
-            if(!max || !max.length) throw new Error('Internal Error')
+            if (!max || !max.length) throw new Error('Internal Error')
 
             resolve({ max, min })
         } catch (e) {
@@ -119,7 +137,7 @@ const createRepository = (db, measurementName) => {
 
             //min is not neccessary
             //if max is null, min is null
-            if(!max || !max.length) throw new Error('Internal Error')
+            if (!max || !max.length) throw new Error('Internal Error')
 
             resolve({ max, min })
         } catch (e) {
