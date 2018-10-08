@@ -60,7 +60,7 @@ const createRepository = (db, measurementName) => {
             const result = await db.influxDB.query(query)
             const formatResult = await convertTime(result)
 
-            if (!formatResult || !formatResult.length) throw new Error('Internal Error')
+            // if (!formatResult || !formatResult.length) throw new Error('Internal Error')
             resolve(formatResult)
 
         } catch (e) {
@@ -92,7 +92,7 @@ const createRepository = (db, measurementName) => {
 
             //min is not neccessary
             //if max is null, min is null
-            if (!max || !max.length) throw new Error('Internal Error')
+            // if (!max || !max.length) throw new Error('Internal Error')
 
             resolve({ max, min })
         } catch (e) {
