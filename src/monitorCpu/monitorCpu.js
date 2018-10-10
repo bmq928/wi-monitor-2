@@ -61,15 +61,16 @@ const createRepository = (db, measurementName) => {
             const queryMax = `SELECT * FROM three_months.max_cpu_usage WHERE 1=1 ${whereClause}`
             // query for max cpu usage
             const queryMin = `SELECT * FROM three_months.min_cpu_usage WHERE 1=1 ${whereClause}`
-
+            console.log(queryMax)
             // raw data
             const result = await Promise.all([
                 db.influxDB.query(queryMax),
                 db.influxDB.query(queryMin)
             ])
-
-            const [max, min] = result.map(async i => await convertTime(i))
-
+            // console.log(result)
+            // const [max, min] = result.map(async i => await convertTime(i))
+            const [max, min] = await Promise.all(result.map(i => convertTime(i)))
+            
             //min is not neccessary
             //if max is null, min is null
             // if(!max || !max.length) throw new Error('Internal Error')

@@ -101,7 +101,8 @@ const createRepository = (db, measurementName) => {
                 db.influxDB.query(queryMin)
             ])
 
-            const [max, min] = result.map(async i => await convertTime(i))
+            // const [max, min] = result.map(async i => await convertTime(i))
+            const [max, min] = await Promise.all(result.map(i => convertTime(i)))
 
             //min is not neccessary
             //if max is null, min is null
@@ -133,7 +134,8 @@ const createRepository = (db, measurementName) => {
                 db.influxDB.query(queryMin)
             ])
 
-            const [max, min] = result.map(async i => await convertTime(i))
+            // const [max, min] = result.map(async i => await convertTime(i))
+            const [max, min] = await Promise.all(result.map(i => convertTime(i)))
 
             //min is not neccessary
             //if max is null, min is null
